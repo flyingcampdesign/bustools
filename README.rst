@@ -1,5 +1,5 @@
-Bus Tools
-=========
+bustools
+========
 
 Python tools for electrical busses such as I2C, SPI, etc.
 
