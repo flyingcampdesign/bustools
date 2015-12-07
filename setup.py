@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """bustools
 
 Python tools for electrical busses
