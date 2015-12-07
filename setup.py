@@ -48,6 +48,10 @@ setup(
         'Topic :: Software Development :: Embedded Systems',
     ],
 
+    extras_require={
+        'aardvark': ['aardvark_py']
+    },
+
     packages=find_packages(),
 
     include_package_data = True,
