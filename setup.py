@@ -28,18 +28,18 @@ def find_version(*file_paths):
     raise RuntimeError('Unable to find version string.')
 
 setup(
-    name='bustools',
-    version=find_version('bustools', '__init__.py'),
-    description='Python tools for electrical busses',
-    long_description=read('README.rst'),
-    url='https://github.com/FlyingCampDesign/bustools.git',
-    author='Flying Camp Design',
-    author_email='support@flyingcampdesign.com',
-    license='MIT',
-    keywords='development embedded I2C SPI',
+    name = 'bustools',
+    version = find_version('bustools', '__init__.py'),
+    description = 'Python tools for electrical busses',
+    long_description = read('README.rst'),
+    url = 'https://github.com/FlyingCampDesign/bustools.git',
+    author = 'Flying Camp Design',
+    author_email = 'support@flyingcampdesign.com',
+    license = 'MIT',
+    keywords = 'development embedded I2C SPI',
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
-    classifiers=[
+    classifiers = [
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
@@ -48,11 +48,11 @@ setup(
         'Topic :: Software Development :: Embedded Systems',
     ],
 
-    extras_require={
+    extras_require = {
         'aardvark': ['aardvark_py']
     },
 
-    packages=find_packages(),
+    packages = find_packages(),
 
     include_package_data = True,
 )
