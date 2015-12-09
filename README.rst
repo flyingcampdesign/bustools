@@ -21,6 +21,12 @@ The ``bustools`` package can be installed from PyPI using ``pip``:
 
     $ pip install bustools
 
+Support for the Total Phase Aardvark adapter is not included by default since it only supports Windows, Mac OS X, and Linux.  To include support for the Aardvark adapter, you need to specify the 'aardvark' extra:
+
+.. code-block:: console
+
+    $ pip install bustools[aardvark]
+
 
 Usage
 -----
