@@ -266,6 +266,11 @@ class PCA9557(PCA95XX):
     def __init__(self, master, address, name=None):
         PCA95XX.__init__(self, master=master, address=address, register_offset=1, ports=1, width=8, name=name)
 
+class PCA9535(PCA95XX):
+
+    def __init__(self, master, address, name=None):
+        PCA95XX.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
+
 class PCA9555(PCA95XX):
 
     def __init__(self, master, address, name=None):
