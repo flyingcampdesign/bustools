@@ -11,7 +11,7 @@
 # the project code, see
 # https://packaging.python.org/en/latest/single_source_version.html
 #==========================================================================
-__version__ = "0.1.0.dev1"
+__version__ = "0.1.0.dev2"
 
 def version():
     return __version__
