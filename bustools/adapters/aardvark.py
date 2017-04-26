@@ -371,6 +371,17 @@ class Aardvark(object):
         if not (i2c_bus_timeout == value):
             raise AardvarkError("unable to configure Aardvark I2C bus timeout")
 
+    def i2c_read(self, address, num_bytes):
+        """Read an array of bytes from an I2C slave device."""
+        # TODO add keywork arguments to enable features provided by I2C flags
+        i2c_flags=aardvark_py.AA_I2C_NO_FLAGS
+        status, data_in, num_read = aardvark_py.aa_i2c_read_ext(self._aardvark_handle, address, i2c_flags, num_bytes)
+        read_status = status & 0xFF
+        _validate_I2C_status(read_status)
+        if num_read != num_bytes:
+            raise AardvarkError("bytes read (%d) does not match expected (%d)" % (num_read, num_bytes))
+        return data_in
+
     def i2c_write(self, address, data):
         """Write an array of bytes to an I2C slave device."""
         # TODO add keywork arguments to enable features provided by I2C flags
@@ -378,7 +389,7 @@ class Aardvark(object):
         status, num_written = aardvark_py.aa_i2c_write_ext(self._aardvark_handle, address, i2c_flags, data)
         _validate_I2C_status(status)
         if num_written != len(data):
-            raise INA219Error("bytes written (%d) does not match expected (%d)" % (num_written, len(data)))
+            raise AardvarkError("bytes written (%d) does not match expected (%d)" % (num_written, len(data)))
 
     def i2c_write_read(self, address, data_out, num_bytes):
         """Atomic write+read an array of bytes to an I2C slave device."""
@@ -390,7 +401,7 @@ class Aardvark(object):
         _validate_I2C_status(write_status)
         _validate_I2C_status(read_status)
         if num_written != len(data_out):
-            raise INA219Error("bytes written (%d) does not match expected (%d)" % (num_written, len(data_out)))
+            raise AardvarkError("bytes written (%d) does not match expected (%d)" % (num_written, len(data_out)))
         if num_read != num_bytes:
-            raise INA219Error("bytes read (%d) does not match expected (%d)" % (num_read, num_bytes))
+            raise AardvarkError("bytes read (%d) does not match expected (%d)" % (num_read, num_bytes))
         return data_in
