@@ -87,7 +87,7 @@ def _write_register(master, address, register_offset, port_number, register_type
     _validate_register_type(register_type)
     data = array('B', [0])
     data[0] = _command(register_offset, port_number, register_type)
-    if value:
+    if value is not None:
         data.insert(1, value)
     master.i2c_write(address, data)
 
@@ -220,7 +220,7 @@ class Port(object):
     def _configuration_register(self, value):
         self._expander._write_register(self.number, _CONFIGURATION_REGISTER, value)
 
-class PCA95XX(object):
+class PCA95xx(object):
 
     def __init__(self, master, address, register_offset, ports, width, name=None):
 
@@ -251,32 +251,32 @@ class PCA95XX(object):
     def _write_register(self, port_number, register_type, value=None):
         _write_register(self.master, self.address, self._register_offset, port_number, register_type, value)
 
-class PCA9536(PCA95XX):
+class PCA9536(PCA95xx):
 
     def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=1, ports=1, width=4, name=name)
+        PCA95xx.__init__(self, master=master, address=address, register_offset=1, ports=1, width=4, name=name)
 
-class PCA9554(PCA95XX):
-
-    def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=1, ports=1, width=8, name=name)
-
-class PCA9557(PCA95XX):
+class PCA9554(PCA95xx):
 
     def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=1, ports=1, width=8, name=name)
+        PCA95xx.__init__(self, master=master, address=address, register_offset=1, ports=1, width=8, name=name)
 
-class PCA9535(PCA95XX):
-
-    def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
-
-class PCA9555(PCA95XX):
+class PCA9557(PCA95xx):
 
     def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
+        PCA95xx.__init__(self, master=master, address=address, register_offset=1, ports=1, width=8, name=name)
 
-class PCA9505(PCA95XX):
+class PCA9535(PCA95xx):
 
     def __init__(self, master, address, name=None):
-        PCA95XX.__init__(self, master=master, address=address, register_offset=8, ports=5, width=8, name=name)
+        PCA95xx.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
+
+class PCA9555(PCA95xx):
+
+    def __init__(self, master, address, name=None):
+        PCA95xx.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
+
+class PCA9505(PCA95xx):
+
+    def __init__(self, master, address, name=None):
+        PCA95xx.__init__(self, master=master, address=address, register_offset=8, ports=5, width=8, name=name)
