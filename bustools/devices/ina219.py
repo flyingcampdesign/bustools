@@ -187,7 +187,7 @@ class INA219(object):
         _validate_register(register)
         data = array('B', [0])
         data[0] = register
-        if value:
+        if value is not None:
             value_msb = (value >> 8) & 0xFF
             value_lsb = value & 0xFF
             data.insert(1, value_msb)

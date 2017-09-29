@@ -58,13 +58,14 @@ def _write_register(master, address, register, value=None):
     _validate_register_type(register)
     data = array('B', [0])
     data[0] = register
-    if _REGISTER_WIDTH[register] == 1:
-        data.insert(1, 0xFF & value)
-    elif _REGISTER_WIDTH[register] == 2:
-        data.insert(1, 0xFF & value)
-        data.insert(2, 0xFF & (value >> 8))
-    else:
-        raise LM75Error("invalid register width")
+    if value is not None:
+        if _REGISTER_WIDTH[register] == 1:
+            data.insert(1, 0xFF & value)
+        elif _REGISTER_WIDTH[register] == 2:
+            data.insert(1, 0xFF & value)
+            data.insert(2, 0xFF & (value >> 8))
+        else:
+            raise LM75Error("invalid register width")
     master.i2c_write(address, data)
 
 class LM75(object):
