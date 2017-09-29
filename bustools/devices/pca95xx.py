@@ -280,3 +280,8 @@ class PCA9505(PCA95xx):
 
     def __init__(self, master, address, name=None):
         PCA95xx.__init__(self, master=master, address=address, register_offset=8, ports=5, width=8, name=name)
+
+class PCA9539(PCA95xx):
+
+    def __init__(self, master, address, name=None):
+        PCA95xx.__init__(self, master=master, address=address, register_offset=2, ports=2, width=8, name=name)
