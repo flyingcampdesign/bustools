@@ -1,13 +1,14 @@
+**Note:** This package is no longer being developed. It is recommended to use `Adafruit-Blinka <https://github.com/adafruit/Adafruit_Blinka>`_ instead.
+
 bustools
 ========
 
 Python tools for electrical busses such as I2C and SPI.
 
-
 Status
 ------
 
-This package is very much a work in progress, and there is no real documentation yet...  There is currently basic support for the `Total Phase Aardvark <http://www.totalphase.com/products/aardvark-i2cspi/>`_ adapter as an I2C master.  There is also initial support for a couple I2C slave devices (see `bustools/devices/`) and the `I2C/SPI Activity Board <http://www.totalphase.com/products/activity-board/>`_ platform.
+There is currently basic support for the `Total Phase Aardvark <http://www.totalphase.com/products/aardvark-i2cspi/>`_ adapter as an I2C master.  There is also initial support for a couple I2C slave devices (see `bustools/devices/`) and the `I2C/SPI Activity Board <http://www.totalphase.com/products/activity-board/>`_ platform.
 
 The public API is not guaranteed to be stable until 1.x release.
 
